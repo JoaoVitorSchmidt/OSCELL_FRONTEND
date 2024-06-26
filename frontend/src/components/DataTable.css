@@ -1,0 +1,27 @@
+/* DataTable.css */
+.data-table {
+  margin-top: 20px;
+  color: black;
+  border-color: black;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  background-color: white; /* Background branco */
+  color: black; /* Texto preto */
+}
+
+th {
+  background-color: black; /* Background preto */
+  color: white; /* Texto branco */
+}

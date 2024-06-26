@@ -1,0 +1,78 @@
+/* OSPage.css */
+.os-page {
+  display: flex;
+  flex-direction: column; /* Muda a direção do flex para coluna */
+  height: 100vh;
+  background-color: #2e2e2e;
+  color: #fff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .os-page {
+    flex-direction: row; /* Em telas maiores, volta para linha */
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 10px; /* Padding reduzido para dispositivos menores */
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 20px; /* Padding maior para telas maiores */
+  }
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column; /* Botões em coluna para telas menores */
+  align-items: center; /* Centraliza os botões */
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .buttons-container {
+    flex-direction: row; /* Botões em linha para telas maiores */
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+.open-insert-os-button {
+  padding: 10px;
+  width: 90%; /* Largura reduzida para margem nas laterais */
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Espaçamento entre os botões */
+}
+
+.open-insert-os-button:hover {
+  background-color: #333;
+}
+
+@media (min-width: 768px) {
+  .open-insert-os-button {
+    width: auto; /* Largura automática para telas maiores */
+    margin-bottom: 0; /* Remove o espaçamento entre os botões */
+  }
+}
+
+/* DataTable.css */
+.data-table {
+  overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+.data-table table {
+  width: 100%; /* Garante que a tabela ocupe a largura total */
+  border-collapse: collapse; /* Remove espaços entre as células */
+}
+
+.data-table th, .data-table td {
+  padding: 8px; /* Padding reduzido para células */
+  text-align: left; /* Alinhamento à esquerda para as células */
+}
