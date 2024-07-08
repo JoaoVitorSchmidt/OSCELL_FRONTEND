@@ -2,32 +2,32 @@ import React, { useState } from 'react';
 import './LoginForm.css';
 
 function LoginForm() {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-        const response = await fetch('http://localhost:8080/user/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ userName, password }),
-        });
-  
-        if (response.ok) {
-            const { token } = await response.json(); // Supondo que o servidor retorne um objeto com uma propriedade 'token'
-            localStorage.setItem('token', token);// Armazena o token no armazenamento local
-            window.location.href = '/os';
-        } else {
-            setError('Credenciais inválidas.');
-        }
+      const response = await fetch('http://localhost:8080/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }), // Use "username" e "password" conforme o backend
+      });
+
+      if (response.ok) {
+        const { token } = await response.json(); // Supondo que o servidor retorne um objeto com uma propriedade 'token'
+        localStorage.setItem('token', token); // Armazena o token no armazenamento local
+        window.location.href = '/os';
+      } else {
+        setError('Credenciais inválidas.');
+      }
     } catch (error) {
-        setError('Erro na comunicação com o servidor');
+      setError('Erro na comunicação com o servidor');
     }
-  };  
+  };
 
   return (
     <div className="login-container">
@@ -37,8 +37,8 @@ function LoginForm() {
           <input
             type="text"
             placeholder="Usuário"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} // Altere "userName" para "username"
           />
         </div>
         <div>

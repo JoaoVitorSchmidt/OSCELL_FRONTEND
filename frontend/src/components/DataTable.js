@@ -5,10 +5,34 @@ function DataTable() {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    fetch('http://localhost:8080/serviceOrder')
-      .then(response => response.json())
-      .then(data => setData(Array.isArray(data) ? data : []))
-      .catch(error => console.error('Error fetching data:', error));
+    const fetchData = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8080/serviceOrder', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setData(Array.isArray(data) ? data : []);
+        } else {
+          console.error('Failed to fetch data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
   
   return (
