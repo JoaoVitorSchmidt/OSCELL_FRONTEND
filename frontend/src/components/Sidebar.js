@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-import CustomIcon from './cellphone.png'; // Caminho para o ícone que você baixou
+import CustomIcon from './photos/cellphone.png'; // Caminho para o ícone que você baixou
 
 function Sidebar() {
   return (

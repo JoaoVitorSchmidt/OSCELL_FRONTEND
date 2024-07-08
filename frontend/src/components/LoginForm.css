@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('./LoginPage.png') no-repeat center center fixed;
+  background: url('./photos/LoginPage.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -36,17 +36,21 @@ body {
 }
 
 .login-form button {
+  margin-top: 10px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
 }
 
 .login-form button:hover {
-  background-color: #0056b3;
+  background-color: #333333;
 }
+
 
 .error {
   color: red;

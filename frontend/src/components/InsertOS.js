@@ -7,7 +7,12 @@ function InsertOS({ onClose }) {
     clientCPF: '',
     brand: '',
     model: '',
-    situation: ''
+    situation: '',
+    clientCell: '',
+    clientFixo: '',
+    clientEmail: '',
+    description: '',
+    userSys: ''
   });
 
   const handleChange = (e) => {
@@ -19,21 +24,22 @@ function InsertOS({ onClose }) {
   };
 
   const handleInsert = () => {
-    const token = localStorage.getItem('token'); // Obtenha o token JWT do armazenamento local
-    const data = { ...newOS }; // Use o estado newOS como os dados a serem enviados
+    const token = localStorage.getItem('token');
+    const userSys = localStorage.getItem('username'); // Obtém o nome do usuário do localStorage
+    const data = { ...newOS, userSys }; // Adiciona o nome do usuário aos dados a serem enviados
   
     fetch('http://localhost:8080/serviceOrder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` // Inclua o token JWT no cabeçalho da requisição
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));    
-  };
+    .catch(error => console.error('Error:', error));
+  };  
 
   return (
     <div className="insert-os-overlay">
@@ -73,6 +79,33 @@ function InsertOS({ onClose }) {
           name="situation"
           placeholder="Situação"
           value={newOS.situation}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="clientCell"
+          placeholder="Celular Cliente"
+          value={newOS.clientCell}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="clientFixo"
+          placeholder="Telefone Fixo Cliente"
+          value={newOS.clientFixo}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="clientEmail"
+          placeholder="Email Cliente"
+          value={newOS.clientEmail}
+          onChange={handleChange}
+        />
+        <textarea
+          name="description"
+          placeholder="Descrição do Defeito"
+          value={newOS.description}
           onChange={handleChange}
         />
         <button onClick={handleInsert}>Inserir OS</button>

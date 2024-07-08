@@ -5,29 +5,38 @@ function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [pending, setPending] = useState(false); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setPending(true);
+  
     try {
       const response = await fetch('http://localhost:8080/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }), // Use "username" e "password" conforme o backend
+        body: JSON.stringify({ username, password }),
       });
-
+  
       if (response.ok) {
-        const { token } = await response.json(); // Supondo que o servidor retorne um objeto com uma propriedade 'token'
-        localStorage.setItem('token', token); // Armazena o token no armazenamento local
+        const data = await response.json();
+        console.log('Dados recebidos:', data); // Verifica o que está sendo recebido
+  
+        const { token, username } = data; // Ajuste para receber token e username
+        localStorage.setItem('token', token);
+        localStorage.setItem('username', username);
         window.location.href = '/os';
       } else {
         setError('Credenciais inválidas.');
       }
     } catch (error) {
       setError('Erro na comunicação com o servidor');
+    } finally {
+      setPending(false);
     }
-  };
+  };  
 
   return (
     <div className="login-container">
@@ -38,7 +47,7 @@ function LoginForm() {
             type="text"
             placeholder="Usuário"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // Altere "userName" para "username"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
@@ -49,7 +58,9 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">ENTRAR</button>
+        <button type="submit" disabled={pending}>
+          {pending ? "Entrando..." : "ENTRAR"}
+        </button>
         {error && <p className="error">{error}</p>}
       </form>
     </div>
