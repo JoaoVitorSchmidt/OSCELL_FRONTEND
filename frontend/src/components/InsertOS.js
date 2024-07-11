@@ -8,22 +8,22 @@ function InsertOS({ onClose, onOSInserted }) {
     clientCPF: '',
     brand: '',
     model: '',
-    situation: 'Pronto', // Set a default value for situation
+    situation: 'Pronto',
     clientCell: '',
     clientFixo: '',
     clientEmail: '',
     description: '',
-    userSys: '',
     laborCost: '',
     partsCost: ''
   });
 
   const [clients, setClients] = useState([]);
-  const [selectedClient, setSelectedClient] = useState(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    
+    // Carrega a lista de clientes para seleção no formulário
     axios.get('http://localhost:8080/client', {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -35,10 +35,10 @@ function InsertOS({ onClose, onOSInserted }) {
     .catch(error => console.error('Error fetching clients:', error));
   }, []);
 
+  // Função para lidar com a mudança de cliente selecionado
   const handleClientChange = (e) => {
     const selectedClient = clients.find(client => client.clientName === e.target.value);
     if (selectedClient) {
-      setSelectedClient(selectedClient);
       setNewOS((prevOS) => ({
         ...prevOS,
         clientName: selectedClient.clientName,
@@ -50,6 +50,7 @@ function InsertOS({ onClose, onOSInserted }) {
     }
   };
 
+  // Função para lidar com a mudança de qualquer outro campo no formulário
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewOS((prevOS) => ({
@@ -58,12 +59,12 @@ function InsertOS({ onClose, onOSInserted }) {
     }));
   };
 
+  // Função para inserir a OS
   const handleInsert = () => {
     const token = localStorage.getItem('token');
     const userSys = localStorage.getItem('username');
-    const data = { ...newOS, userSys };
-
-    axios.post('http://localhost:8080/serviceOrder', data, {
+  
+    axios.post('http://localhost:8080/serviceOrder', { ...newOS, userSys }, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -71,7 +72,7 @@ function InsertOS({ onClose, onOSInserted }) {
     })
     .then(response => {
       console.log(response.data);
-      if (response.status === 201) {
+      if (response.status === 200 || response.status === 201) {
         setMessage('Ordem de serviço inserida com sucesso!');
         onOSInserted();
         setTimeout(() => {
@@ -87,13 +88,13 @@ function InsertOS({ onClose, onOSInserted }) {
         setMessage('');
       }, 2000);
     });
-  };
+  };  
 
   return (
     <div className="insert-os-overlay">
       <div className="insert-os-container">
         <button className="close-button" onClick={onClose}>X</button>
-        <h2>Cadastro de OS</h2>
+        <h2>Nova OS</h2>
         {message && <p className="message">{message}</p>}
         <div className="os-header">
           <div className="client-info">
