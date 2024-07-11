@@ -31,8 +31,8 @@ function DataTable() {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         if (response.ok) {
@@ -41,25 +41,24 @@ function DataTable() {
           setFilteredData(data);
 
           // Extract unique client names
-          const uniqueClientNames = Array.from(new Set(data.map(item => item.clientName)));
+          const uniqueClientNames = Array.from(new Set(data.map((item) => item.clientName)));
           setClientNames(uniqueClientNames);
 
           // Extract unique CPF values
-          const uniqueCpfValues = Array.from(new Set(data.map(item => item.clientCPF)));
+          const uniqueCpfValues = Array.from(new Set(data.map((item) => item.clientCPF)));
           setCpfValues(uniqueCpfValues);
 
           // Extract unique brand values
-          const uniqueBrandValues = Array.from(new Set(data.map(item => item.brand)));
+          const uniqueBrandValues = Array.from(new Set(data.map((item) => item.brand)));
           setBrandValues(uniqueBrandValues);
 
           // Extract unique model values
-          const uniqueModelValues = Array.from(new Set(data.map(item => item.model)));
+          const uniqueModelValues = Array.from(new Set(data.map((item) => item.model)));
           setModelValues(uniqueModelValues);
 
           // Extract unique situation values
-          const uniqueSituationValues = Array.from(new Set(data.map(item => item.situation)));
+          const uniqueSituationValues = Array.from(new Set(data.map((item) => item.situation)));
           setSituationValues(uniqueSituationValues);
-
         } else {
           console.error('Failed to fetch data:', response.statusText);
         }
@@ -99,86 +98,112 @@ function DataTable() {
     setSelectedSituation(event.target.value || '');
   };
 
+  const applyFilters = () => {
+    const filtered = data.filter((item) => {
+      return (
+        (selectedClient === '' || item.clientName === selectedClient) &&
+        (selectedCPF === '' || item.clientCPF === selectedCPF) &&
+        (selectedBrand === '' || item.brand === selectedBrand) &&
+        (selectedModel === '' || item.model === selectedModel) &&
+        (selectedSituation === '' || item.situation === selectedSituation)
+      );
+    });
+
+    // Ordenando em ordem decrescente pelo número de sequência
+    const sortedFiltered = filtered.sort((a, b) => b.sequence - a.sequence);
+
+    setFilteredData(sortedFiltered);
+  };
+
   useEffect(() => {
-    let filtered = [...data];
-
-    if (selectedClient) {
-      filtered = filtered.filter(item => item.clientName && item.clientName.toLowerCase().includes(selectedClient.toLowerCase()));
-    }
-    if (selectedCPF) {
-      filtered = filtered.filter(item => item.clientCPF && item.clientCPF.toLowerCase().includes(selectedCPF.toLowerCase()));
-    }
-    if (selectedBrand) {
-      filtered = filtered.filter(item => item.brand && item.brand.toLowerCase().includes(selectedBrand.toLowerCase()));
-    }
-    if (selectedModel) {
-      filtered = filtered.filter(item => item.model && item.model.toLowerCase().includes(selectedModel.toLowerCase()));
-    }
-    if (selectedSituation) {
-      filtered = filtered.filter(item => item.situation && item.situation.toLowerCase().includes(selectedSituation.toLowerCase()));
-    }
-
-    setFilteredData(filtered);
+    applyFilters();
   }, [selectedClient, selectedCPF, selectedBrand, selectedModel, selectedSituation]);
 
+  const handleOSInserted = () => {
+    // Fetch data again after insertion to update the table
+    const fetchData = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8080/serviceOrder', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setData(data);
+          applyFilters(); // Aplicando filtros novamente após a inserção
+        } else {
+          console.error('Failed to fetch data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  };
+
   return (
-    <div className="data-table">
+    <div>
       <div className="filters">
-        <div className="filter">
-          <label htmlFor="clientFilter">Cliente:</label>
-          <select id="clientFilter" value={selectedClient} onChange={handleClientFilterChange}>
-            <option value="">Todos</option>
-            {clientNames.map((client, index) => (
-              <option key={index} value={client}>{client}</option>
-            ))}
-          </select>
-        </div>
-        <div className="filter">
-          <label htmlFor="cpfFilter">CPF:</label>
-          <select id="cpfFilter" value={selectedCPF} onChange={handleCPFFilterChange}>
-            <option value="">Todos</option>
-            {cpfValues.map((cpf, index) => (
-              <option key={index} value={cpf}>{cpf}</option>
-            ))}
-          </select>
-        </div>
-        <div className="filter">
-          <label htmlFor="brandFilter">Marca:</label>
-          <select id="brandFilter" value={selectedBrand} onChange={handleBrandFilterChange}>
-            <option value="">Todos</option>
-            {brandValues.map((brand, index) => (
-              <option key={index} value={brand}>{brand}</option>
-            ))}
-          </select>
-        </div>
-        <div className="filter">
-          <label htmlFor="modelFilter">Modelo:</label>
-          <select id="modelFilter" value={selectedModel} onChange={handleModelFilterChange}>
-            <option value="">Todos</option>
-            {modelValues.map((model, index) => (
-              <option key={index} value={model}>{model}</option>
-            ))}
-          </select>
-        </div>
-        <div className="filter">
-          <label htmlFor="situationFilter">Situação:</label>
-          <select id="situationFilter" value={selectedSituation} onChange={handleSituationFilterChange}>
-            <option value="">Todos</option>
-            {situationValues.map((situation, index) => (
-              <option key={index} value={situation}>{situation}</option>
-            ))}
-          </select>
-        </div>
-        <div className="buttons-container">
-          <button className="open-insert-os-button" onClick={openInsertOS}>
-            Inserir OS
-          </button>
-        </div>
+        <select value={selectedClient} onChange={handleClientFilterChange}>
+          <option value="">Nome Cliente</option>
+          {clientNames.map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+        <select value={selectedCPF} onChange={handleCPFFilterChange}>
+          <option value="">CPF Cliente</option>
+          {cpfValues.map((cpf) => (
+            <option key={cpf} value={cpf}>
+              {cpf}
+            </option>
+          ))}
+        </select>
+        <select value={selectedBrand} onChange={handleBrandFilterChange}>
+          <option value="">Marca</option>
+          {brandValues.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
+        </select>
+        <select value={selectedModel} onChange={handleModelFilterChange}>
+          <option value="">Modelo</option>
+          {modelValues.map((model) => (
+            <option key={model} value={model}>
+              {model}
+            </option>
+          ))}
+        </select>
+        <select value={selectedSituation} onChange={handleSituationFilterChange}>
+          <option value="">Situação</option>
+          {situationValues.map((situation) => (
+            <option key={situation} value={situation}>
+              {situation}
+            </option>
+          ))}
+        </select>
+        <button onClick={openInsertOS} className="insert-button">
+          Inserir OS
+        </button>
       </div>
-      <table>
+      {isInsertOSOpen && <InsertOS onClose={closeInsertOS} onOSInserted={handleOSInserted} />}
+      <table className="data-table">
         <thead>
           <tr>
-            <th>Número Sequência</th>
+            <th>Nº Sequencia</th>
             <th>Nome Cliente</th>
             <th>CPF Cliente</th>
             <th>Marca</th>
@@ -187,19 +212,18 @@ function DataTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((row, index) => (
+          {filteredData.map((item, index) => (
             <tr key={index}>
-              <td>{row.sequence}</td>
-              <td>{row.clientName}</td>
-              <td>{row.clientCPF}</td>
-              <td>{row.brand}</td>
-              <td>{row.model}</td>
-              <td>{row.situation}</td>
+              <td>{item.sequence}</td>
+              <td>{item.clientName}</td>
+              <td>{item.clientCPF}</td>
+              <td>{item.brand}</td>
+              <td>{item.model}</td>
+              <td>{item.situation}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {isInsertOSOpen && <InsertOS onClose={closeInsertOS} />}
     </div>
   );
 }

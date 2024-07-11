@@ -10,69 +10,75 @@ table {
   margin-top: 10px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
 }
 
-th, td {
-  padding: 8px;
-  text-align: left;
-  background-color: white; /* Background branco */
-  color: black; /* Texto preto */
+th,
+td {
+  padding: 12px; /* Aumentado o padding para melhorar o espaçamento */
+  text-align: center; /* Centralizando o texto */
+  background-color: #252627; /* Fundo cinza escuro */
+  color: white; /* Texto branco */
 }
 
 th {
-  background-color: black; /* Background preto */
-  color: white; /* Texto branco */
+  background-color: #000000;
 }
 
 .filters {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
-.filter {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.filter label {
-  margin-right: 5px;
-  color: #fff;
-  font-weight: bold;
-}
-
-.filter select {
+.filters select {
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 200px;
+  margin-right: 10px;
   background-color: white;
   color: black;
   cursor: pointer;
 }
 
-.filter select option {
+.filters select option {
   background-color: white;
   color: black;
 }
 
-.buttons-container {
-  margin-left: 10px;
-  align-self: flex-end;
-}
-
-.open-insert-os-button {
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: #007bff;
+.insert-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-.open-insert-os-button:hover {
-  background-color:#0056b3;
+.insert-button:hover {
+  background-color: #464545;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .insert-button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }

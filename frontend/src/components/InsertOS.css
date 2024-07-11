@@ -1,76 +1,154 @@
-/* InsertOS.css */
 .insert-os-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    color: black;
-  }
-  
-  .insert-os-container {
-    background: #fff;
-    padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    width: 450px;
-    max-width: 95%;
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: black; /* Fundo preto */
-    color: white; /* Texto branco */
-    border: none;
-    font-size: 14px; /* Tamanho de fonte ajustado */
-    cursor: pointer;
-    padding: 8px; /* Padding ajustado */
-    border-radius: 4px; /* Bordas arredondadas */
-    width: 30px; /* Largura fixa */
-    height: 30px; /* Altura fixa */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .close-button:hover {
-    background-color: #333; /* Escurece ao passar o mouse */
-  }
-  
-  .insert-os-container input, .insert-os-container button {
-    width: calc(100% - 20px); /* Ajuste da largura para incluir o padding e não ultrapassar os limites */
-    margin: 10px 0; /* Espaçamento vertical entre os elementos */
-    padding: 12px 10px; /* Padding interno */
-    border: 1px solid #ddd;
-    border-radius: 4px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho de fonte para melhor leitura */
-  }
-  
-  .insert-os-container input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .insert-os-container button {
-    background: black; /* Fundo preto */
-    color: white; /* Texto branco */
-    cursor: pointer;
-  }
-  
-  .insert-os-container button:hover {
-    background-color: #333; /* Escurece ao passar o mouse */
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: #fff;
+}
+
+.insert-os-container {
+  background: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 900px;
+  position: relative;
+  color: #fff;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.close-button:hover {
+  background-color: #555;
+}
+
+.os-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.client-info {
+  background: #666;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.os-status {
+  display: flex;
+  align-items: center;
+}
+
+.tab-container {
+  margin-top: 20px;
+}
+
+.tab-header {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tab-button {
+  background: #444;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+.tab-button.active {
+  background: #007bff;
+}
+
+.tab-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.insert-os-container input,
+.insert-os-container textarea,
+.insert-os-container select {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #555;
+  color: #fff;
+}
+
+.insert-os-container input:focus,
+.insert-os-container textarea:focus,
+.insert-os-container select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.os-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cost-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.cost-section label {
+  margin-bottom: 5px;
+}
+
+.cost-section input {
+  margin-bottom: 10px;
+}
+
+.total-cost {
+  color: red;
+  font-weight: bold;
+}
+
+.button-section button {
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.button-section button:hover {
+  background: #555;
+}
