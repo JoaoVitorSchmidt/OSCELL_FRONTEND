@@ -8,7 +8,7 @@ function InsertOS({ onClose, onOSInserted }) {
     clientCPF: '',
     brand: '',
     model: '',
-    situation: 'Pronto',
+    situation: 'Aguardando Peças',
     clientCell: '',
     clientFixo: '',
     clientEmail: '',
@@ -117,6 +117,7 @@ function InsertOS({ onClose, onOSInserted }) {
               <option value="Pronto">Pronto</option>
               <option value="Em Andamento">Em Andamento</option>
               <option value="Aguardando Peças">Aguardando Peças</option>
+              <option value="Sem Solução">Sem Solução</option>
             </select>
           </div>
         </div>

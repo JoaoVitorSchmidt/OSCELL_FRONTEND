@@ -118,6 +118,7 @@ function EditOS({ onClose, onOSUpdated, data }) {
               <option value="Pronto">Pronto</option>
               <option value="Em Andamento">Em Andamento</option>
               <option value="Aguardando Peças">Aguardando Peças</option>
+              <option value="Sem Solução">Sem Solução</option>
             </select>
           </label>
           <label>
