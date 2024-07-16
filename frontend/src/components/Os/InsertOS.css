@@ -77,7 +77,7 @@
 }
 
 .tab-button.active {
-  background: #007bff;
+  background: #000;
 }
 
 .tab-content {
@@ -110,7 +110,7 @@
 .insert-os-container input:focus,
 .insert-os-container textarea:focus,
 .insert-os-container select:focus {
-  border-color: #007bff;
+  border-color: #000;
   outline: none;
 }
 

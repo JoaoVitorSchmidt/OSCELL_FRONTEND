@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from './Sidebar';
-import DataTable from './DataTable';
+import DataTable from './Os/DataTable';
 import './OSPage.css';
 
 function OSPage() {

@@ -7,6 +7,7 @@
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
+    text-align: left;
     justify-content: center;
     z-index: 1000;
     color: #fff;
@@ -70,7 +71,7 @@
   input:focus,
   select:focus,
   textarea:focus {
-    border-color: #007bff;
+    border-color: #000;
     outline: none;
   }
   

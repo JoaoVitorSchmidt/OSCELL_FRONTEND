@@ -1,0 +1,83 @@
+.client-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .client-table th, .client-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .client-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .insert-button {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .insert-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-client-overlay, .insert-client-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .edit-client-container, .insert-client-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+  }
+  
+  .edit-client-container h2, .insert-client-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .edit-client-container label, .insert-client-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .edit-client-container input, .insert-client-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-client-container button, .insert-client-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-client-container button:hover, .insert-client-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .close-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+  }
+  

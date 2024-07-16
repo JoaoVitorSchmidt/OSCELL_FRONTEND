@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import CustomIcon from './photos/cellphone.png'; // Caminho para o ícone que você baixou
 
@@ -10,8 +11,9 @@ function Sidebar() {
         <span>OSCELL</span>
       </div>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">OS's</a></li>
+        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/os">OS's</Link></li>
+        <li><Link to="/clients">Clientes</Link></li>
       </ul>
     </div>
   );
