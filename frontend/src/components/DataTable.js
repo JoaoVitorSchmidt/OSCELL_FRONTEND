@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './DataTable.css';
 import InsertOS from './InsertOS';
-import EditOS from './EditOS';
+import EditOS from './EditOs';
 import axios from 'axios';
 
 function DataTable() {

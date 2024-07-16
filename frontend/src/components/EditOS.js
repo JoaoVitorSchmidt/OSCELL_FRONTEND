@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './EditOS.css';
+import './EditOs.css';
 
 function EditOS({ onClose, onOSUpdated, data }) {
   const [formData, setFormData] = useState(data);
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
+    console.log('Initial data:', data); // Log inicial dos dados
     const token = localStorage.getItem('token');
     axios.get('http://localhost:8080/client', {
       headers: {
@@ -17,15 +18,17 @@ function EditOS({ onClose, onOSUpdated, data }) {
       setClients(response.data);
     })
     .catch(error => console.error('Error fetching clients:', error));
-  }, []);
+  }, [data]); // Adiciona 'data' como dependência para garantir que atualizações nos dados sejam refletidas
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(`handleChange: ${name} = ${value}`); // Log para depurar handleChange
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleUpdate = async () => {
     const token = localStorage.getItem('token');
+    console.log('Updating OS with data:', formData); // Log para verificar os dados antes de enviar
     try {
       const response = await axios.put(`http://localhost:8080/serviceOrder/${formData.sequence}`, formData, {
         headers: {
@@ -35,6 +38,7 @@ function EditOS({ onClose, onOSUpdated, data }) {
       });
 
       if (response.status === 200) {
+        console.log('Update successful'); // Log de sucesso
         onOSUpdated();
         onClose();
       } else {
@@ -48,6 +52,7 @@ function EditOS({ onClose, onOSUpdated, data }) {
   const handleClientChange = (e) => {
     const selectedClient = clients.find(client => client.clientName === e.target.value);
     if (selectedClient) {
+      console.log('Selected client:', selectedClient); // Log para depurar cliente selecionado
       setFormData((prevData) => ({
         ...prevData,
         clientName: selectedClient.clientName,
