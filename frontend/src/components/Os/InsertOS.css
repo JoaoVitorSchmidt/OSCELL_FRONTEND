@@ -121,19 +121,6 @@
   margin-top: 20px;
 }
 
-.cost-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.cost-section label {
-  margin-bottom: 5px;
-}
-
-.cost-section input {
-  margin-bottom: 10px;
-}
-
 .total-cost {
   color: red;
   font-weight: bold;

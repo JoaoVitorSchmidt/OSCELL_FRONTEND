@@ -3,6 +3,7 @@ import './DataTable.css';
 import InsertOS from './InsertOS';
 import EditOS from './EditOs';
 import axios from 'axios';
+import { FaFilter } from "react-icons/fa";
 
 function DataTable() {
   const [data, setData] = useState([]);
@@ -152,6 +153,7 @@ function DataTable() {
   return (
     <div>
       <div className="filters">
+        <FaFilter className='filterIcon'/>
         <select value={selectedClient} onChange={handleClientFilterChange}>
           <option value="">Nome Cliente</option>
           {clientNames.map((name) => (

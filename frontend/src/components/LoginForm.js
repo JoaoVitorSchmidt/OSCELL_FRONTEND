@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoPhonePortraitOutline } from "react-icons/io5";
 import './LoginForm.css';
 
 function LoginForm() {
@@ -27,7 +28,7 @@ function LoginForm() {
         const { token, username } = data; // Ajuste para receber token e username
         localStorage.setItem('token', token);
         localStorage.setItem('username', username);
-        window.location.href = '/os';
+        window.location.href = '/home';
       } else {
         setError('Credenciais inválidas.');
       }
@@ -41,7 +42,9 @@ function LoginForm() {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1>OS CELL</h1>
+        <div className="login-logo">
+          <h1>OS CELL</h1>
+        </div>
         <div>
           <input
             type="text"

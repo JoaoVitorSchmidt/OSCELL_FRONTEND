@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaFilter } from "react-icons/fa";
 import './ClientTable.css';
 import InsertClient from './InsertClient';
 import EditClient from './EditClient';
@@ -165,7 +166,7 @@ function ClientTable() {
   return (
     <div>
       <div className="filters">
-        {/* Filtros baseados nos clientes */}
+        <FaFilter className='filterIcon'/>
         <select value={selectedClientName} onChange={handleClientNameFilterChange}>
           <option value="">Nome Cliente</option>
           {clientNames.map((name) => (

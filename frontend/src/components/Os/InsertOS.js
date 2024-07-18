@@ -13,8 +13,6 @@ function InsertOS({ onClose, onOSInserted }) {
     clientFixo: '',
     clientEmail: '',
     description: '',
-    laborCost: '',
-    partsCost: ''
   });
 
   const [clients, setClients] = useState([]);
@@ -23,7 +21,6 @@ function InsertOS({ onClose, onOSInserted }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     
-    // Carrega a lista de clientes para seleção no formulário
     axios.get('http://localhost:8080/client', {
       headers: {
         'Authorization': `Bearer ${token}`
@@ -35,7 +32,6 @@ function InsertOS({ onClose, onOSInserted }) {
     .catch(error => console.error('Error fetching clients:', error));
   }, []);
 
-  // Função para lidar com a mudança de cliente selecionado
   const handleClientChange = (e) => {
     const selectedClient = clients.find(client => client.clientName === e.target.value);
     if (selectedClient) {
@@ -50,7 +46,6 @@ function InsertOS({ onClose, onOSInserted }) {
     }
   };
 
-  // Função para lidar com a mudança de qualquer outro campo no formulário
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewOS((prevOS) => ({
@@ -59,7 +54,6 @@ function InsertOS({ onClose, onOSInserted }) {
     }));
   };
 
-  // Função para inserir a OS
   const handleInsert = () => {
     const token = localStorage.getItem('token');
     const userSys = localStorage.getItem('username');
@@ -71,7 +65,6 @@ function InsertOS({ onClose, onOSInserted }) {
       }
     })
     .then(response => {
-      console.log(response.data);
       if (response.status === 200 || response.status === 201) {
         setMessage('Ordem de serviço inserida com sucesso!');
         onOSInserted();
@@ -125,7 +118,6 @@ function InsertOS({ onClose, onOSInserted }) {
           <div className="tab-header">
             <button className="tab-button active">APARELHO</button>
             <button className="tab-button">PEÇAS ESTOQUE</button>
-            <button className="tab-button">SERVIÇOS REALIZADOS</button>
           </div>
           <div className="tab-content">
             <div className="tab-pane active">
@@ -153,23 +145,6 @@ function InsertOS({ onClose, onOSInserted }) {
           </div>
         </div>
         <div className="os-footer">
-          <div className="cost-section">
-            <label>Mão-de-Obra</label>
-            <input
-              type="text"
-              name="laborCost"
-              value={newOS.laborCost}
-              onChange={handleChange}
-            />
-            <label>Peças</label>
-            <input
-              type="text"
-              name="partsCost"
-              value={newOS.partsCost}
-              onChange={handleChange}
-            />
-            <p className="total-cost">R$200,00</p>
-          </div>
           <div className="button-section">
             <button onClick={handleInsert}>Salvar</button>
             <button onClick={onClose}>Cancelar</button>
