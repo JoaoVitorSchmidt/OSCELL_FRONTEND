@@ -8,6 +8,12 @@
   padding-top: 20px;
 }
 
+.icons{
+  margin-right: 8px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -60,7 +66,7 @@ ul li a:hover {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .logout-button:hover {

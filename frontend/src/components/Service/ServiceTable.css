@@ -1,0 +1,37 @@
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+  
+.service-table th, .service-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+.service-table th {
+    background-color: #333;
+    color: white;
+}
+  
+.service-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+  
+.service-table tr:hover {
+    background-color: #ddd;
+}
+  
+.service-table td button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    background-color: #2e2e2e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.service-table td button:hover {
+    background-color: #333;
+}

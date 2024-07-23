@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import OSPage from './components/OSPage';
 import Footer from './components/Footer';
 import ClientPage from './components/ClientPage';
+import ServicesPage from './components/ServicesPage.js';
 import Home from './components/Home';
 import './App.css';
 
@@ -16,6 +17,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/os" element={<OSPage />} />
           <Route path="/clients" element={<ClientPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/gears" element={<Home />} />
         </Routes>
         <Footer />
       </div>

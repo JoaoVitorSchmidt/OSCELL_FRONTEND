@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { IoPhonePortraitOutline } from "react-icons/io5";
 import './LoginForm.css';
 
 function LoginForm() {
