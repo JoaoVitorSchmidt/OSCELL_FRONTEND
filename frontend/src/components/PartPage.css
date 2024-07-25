@@ -1,0 +1,93 @@
+.parts-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #2e2e2e;
+    color: #fff;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .parts-page {
+      flex-direction: row;
+    }
+  }
+  
+  .content {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .content {
+      padding: 20px;
+    }
+  }
+  
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .buttons-container {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .open-insert-part-button {
+    padding: 10px;
+    width: 90%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .open-insert-part-button:hover {
+    background-color: #333;
+  }
+  
+  @media (min-width: 768px) {
+    .open-insert-part-button {
+      width: auto;
+      margin-bottom: 0;
+    }
+  }
+  
+  .data-table {
+    overflow-x: auto;
+  }
+  
+  .data-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: #ccc;
+  }
+  

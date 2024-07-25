@@ -24,7 +24,6 @@ function ClientTable() {
   const [isEditClientOpen, setIsEditClientOpen] = useState(false);
   const [editClientData, setEditClientData] = useState(null);
 
-  // Função para buscar dados de clientes
   const fetchClients = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -45,7 +44,6 @@ function ClientTable() {
         setClients(clientsData);
         setFilteredClients(clientsData);
 
-        // Buscar valores únicos para os filtros
         const uniqueClientNames = Array.from(new Set(clientsData.map((item) => item.clientName)));
         setClientNames(uniqueClientNames);
 
@@ -75,7 +73,6 @@ function ClientTable() {
     fetchClients();
   }, []);
 
-  // Função para aplicar filtros
   const applyFilters = () => {
     const filtered = clients.filter((client) => {
       return (
@@ -95,7 +92,6 @@ function ClientTable() {
     applyFilters();
   }, [selectedClientName, selectedClientCPF, selectedClientCNPJ, selectedClientCell, selectedClientFixo, selectedClientEmail]);
 
-  // Funções de manipulação de estado para os filtros
   const handleClientNameFilterChange = (event) => {
     setSelectedClientName(event.target.value || '');
   };
@@ -120,7 +116,6 @@ function ClientTable() {
     setSelectedClientEmail(event.target.value || '');
   };
 
-  // Funções para manipulação de clientes
   const openInsertClient = () => {
     setIsInsertClientOpen(true);
   };
@@ -162,7 +157,6 @@ function ClientTable() {
     }
   };
 
-  // Renderização do componente
   return (
     <div>
       <div className="filters">
@@ -219,10 +213,8 @@ function ClientTable() {
           Inserir Cliente
         </button>
       </div>
-      {/* Componentes de inserção e edição de clientes */}
       {isInsertClientOpen && <InsertClient onClose={closeInsertClient} onClientInserted={handleClientInserted} />}
       {isEditClientOpen && <EditClient onClose={() => setIsEditClientOpen(false)} onClientUpdated={fetchClients} data={editClientData} />}
-      {/* Tabela de dados */}
       <table className="data-table">
         <thead>
           <tr>

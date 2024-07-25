@@ -1,0 +1,92 @@
+.filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filters select {
+    margin-right: 10px;
+    padding: 8px;
+}
+
+.insert-button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.insert-button:hover {
+    background-color: #3333;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.data-table th {
+    background-color: #f2f2f2;
+}
+
+.edit-part-overlay, .insert-part-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-part-container, .insert-part-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.edit-part-container h2, .insert-part-container h2 {
+    margin-bottom: 20px;
+}
+
+.edit-part-container label, .insert-part-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.edit-part-container input, .insert-part-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.edit-part-container button, .insert-part-container button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-part-container button:hover, .insert-part-container button:hover {
+    background-color: #222;
+}
+
+.close-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+}

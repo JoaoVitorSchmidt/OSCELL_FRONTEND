@@ -19,7 +19,7 @@ function Sidebar() {
         <li><Link to="/os"><MdOutlineDesignServices className='icons'/>OS's</Link></li>
         <li><Link to="/clients"><IoPeopleSharp className='icons'/>Clientes</Link></li>
         <li><Link to="/services"><FaTools className='icons'/>Serviços</Link></li>
-        <li><Link to="/gears"><FaGear className='icons'/>Peças</Link></li>
+        <li><Link to="/parts"><FaGear className='icons'/>Peças</Link></li>
       </ul>
       <div className="logout-container">
         <LogoutButton />

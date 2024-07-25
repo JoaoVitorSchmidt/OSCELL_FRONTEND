@@ -5,6 +5,7 @@ import OSPage from './components/OSPage';
 import Footer from './components/Footer';
 import ClientPage from './components/ClientPage';
 import ServicesPage from './components/ServicesPage.js';
+import PartPage from './components/PartPage.js';
 import Home from './components/Home';
 import './App.css';
 
@@ -18,7 +19,7 @@ function App() {
           <Route path="/os" element={<OSPage />} />
           <Route path="/clients" element={<ClientPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/gears" element={<Home />} />
+          <Route path="/parts" element={<PartPage />} />
         </Routes>
         <Footer />
       </div>
