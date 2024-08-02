@@ -3,13 +3,13 @@ import Sidebar from './Sidebar';
 import PartTable from './Part/PartTable';
 import './PartPage.css';
 
-const PartPage = () => {
+function PartPage(){
     return (
-        <div>
+        <div className="parts-page">
             <Sidebar />
-            <div>
+            <div className="content">
                 <h1>Controle de Peças</h1>
-                <PartTable />
+                <PartTable/>
             </div>
         </div>
     );

@@ -5,33 +5,28 @@
 }
   
 .service-table th, .service-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
 }
-  
+
 .service-table th {
-    background-color: #333;
+    background-color: #000;
     color: white;
+    text-align: center;
 }
-  
-.service-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+
+.service-table td{
+    background-color: #464545;
 }
-  
-.service-table tr:hover {
-    background-color: #ddd;
+
+.insert-button-service-table{
+    color: #ddd;
+    font-weight: bold;
+    background-color: #000;
 }
-  
-.service-table td button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    background-color: #2e2e2e;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-  
-.service-table td button:hover {
-    background-color: #333;
+
+.insert-button-service-table:hover{
+    background-color: #464545;
+    font-weight: bold;
 }

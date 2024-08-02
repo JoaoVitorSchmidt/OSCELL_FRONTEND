@@ -117,13 +117,13 @@ function PartTable() {
             </option>
           ))}
         </select>
-        <button onClick={openInsertPart} className="insert-button">
+        <button onClick={openInsertPart} className="insert-button-part-table">
           Inserir Peça
         </button>
       </div>
       {isInsertPartOpen && <InsertPart onClose={closeInsertPart} onPartInserted={handlePartInserted} />}
       {isEditPartOpen && <EditPart onClose={() => setIsEditPartOpen(false)} onPartUpdated={fetchParts} data={editPartData} />}
-      <table className="data-table">
+      <table className="part-table">
         <thead>
           <tr>
             <th>ID</th>

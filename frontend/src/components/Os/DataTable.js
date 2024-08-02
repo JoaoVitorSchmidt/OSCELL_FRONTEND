@@ -194,7 +194,7 @@ function DataTable() {
             </option>
           ))}
         </select>
-        <button onClick={openInsertOS} className="insert-button">
+        <button onClick={openInsertOS} className="insert-button-data-table">
           Inserir OS
         </button>
       </div>

@@ -9,7 +9,7 @@
     padding: 8px;
 }
 
-.insert-button {
+.insert-button-part-table {
     padding: 10px 20px;
     background-color: #000;
     color: white;
@@ -17,24 +17,30 @@
     cursor: pointer;
 }
 
-.insert-button:hover {
-    background-color: #3333;
+.insert-button-part-table:hover {
+    background-color: #464545;
 }
 
-.data-table {
+.part-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-.data-table th, .data-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+.part-table th, .part-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
 }
 
-.data-table th {
-    background-color: #f2f2f2;
+.part-table th {
+    background-color: #000;
+    text-align: center;
 }
+
+.part-table td{
+    background-color: #464545;
+  }
 
 .edit-part-overlay, .insert-part-overlay {
     position: fixed;

@@ -1,7 +1,6 @@
 .data-table {
   margin-top: 20px;
   color: black;
-  border-color: black;
 }
 
 table {
@@ -10,22 +9,24 @@ table {
   margin-top: 10px;
 }
 
-table,
-th,
-td {
+.data-table th,
+.data-table td{
   border: 1px solid black;
 }
 
-th,
-td {
-  padding: 12px;
+.data-table th,
+.data-table td {
+  padding: 10px;
   text-align: center;
-  background-color: #252627;
   color: white;
 }
 
-th {
-  background-color: #000000;
+.data-table th{
+  background-color: #000;
+}
+
+.data-table td{
+  background-color: #464545;
 }
 
 .filters {
@@ -51,7 +52,7 @@ th {
   color: black;
 }
 
-.insert-button {
+.insert-button-data-table {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #000000;
@@ -59,10 +60,9 @@ th {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-.insert-button:hover {
+.insert-button-data-table:hover {
   background-color: #464545;
 }
 

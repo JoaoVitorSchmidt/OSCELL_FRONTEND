@@ -209,13 +209,13 @@ function ClientTable() {
             </option>
           ))}
         </select>
-        <button onClick={openInsertClient} className="insert-button">
+        <button onClick={openInsertClient} className="insert-button-client-table">
           Inserir Cliente
         </button>
       </div>
       {isInsertClientOpen && <InsertClient onClose={closeInsertClient} onClientInserted={handleClientInserted} />}
       {isEditClientOpen && <EditClient onClose={() => setIsEditClientOpen(false)} onClientUpdated={fetchClients} data={editClientData} />}
-      <table className="data-table">
+      <table className="client-table">
         <thead>
           <tr>
             <th>ID</th>

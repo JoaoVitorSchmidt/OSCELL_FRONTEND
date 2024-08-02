@@ -119,13 +119,13 @@ function ServiceTable() {
             </option>
           ))}
         </select>
-        <button onClick={openInsertService} className="insert-button">
+        <button onClick={openInsertService} className="insert-button-service-table">
           Inserir Serviço
         </button>
       </div>
       {isInsertServiceOpen && <InsertService onClose={closeInsertService} onServiceInserted={handleServiceInserted} />}
       {isEditServiceOpen && <EditService onClose={() => setIsEditServiceOpen(false)} onServiceUpdated={fetchServices} data={editServiceData} />}
-      <table className="data-table">
+      <table className="service-table">
         <thead>
           <tr>
             <th>ID</th>
